@@ -1,4 +1,6 @@
-package com.apgar.techinical_test.validation;
+package com.apgar.techinical_test.unit.validation;
+
+import com.apgar.techinical_test.validation.ReservaValidator;
 
 import com.apgar.techinical_test.domain.Reserva;
 import com.apgar.techinical_test.domain.Sala;

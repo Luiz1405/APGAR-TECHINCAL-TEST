@@ -1,4 +1,7 @@
-package com.apgar.techinical_test.exception;
+package com.apgar.techinical_test.unit.exception;
+
+import com.apgar.techinical_test.exception.TratadorDeExcecoes;
+import com.apgar.techinical_test.exception.ReservaInvalidaException;
 
 import com.apgar.techinical_test.dto.ErroResponse;
 import org.junit.jupiter.api.Test;

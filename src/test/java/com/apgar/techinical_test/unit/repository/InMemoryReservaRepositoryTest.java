@@ -1,4 +1,6 @@
-package com.apgar.techinical_test.repository;
+package com.apgar.techinical_test.unit.repository;
+
+import com.apgar.techinical_test.repository.InMemoryReservaRepository;
 
 import com.apgar.techinical_test.domain.Reserva;
 import com.apgar.techinical_test.domain.Sala;

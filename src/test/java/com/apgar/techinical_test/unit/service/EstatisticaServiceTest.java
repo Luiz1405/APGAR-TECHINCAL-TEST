@@ -1,4 +1,6 @@
-package com.apgar.techinical_test.service;
+package com.apgar.techinical_test.unit.service;
+
+import com.apgar.techinical_test.service.EstatisticaService;
 
 import com.apgar.techinical_test.domain.Reserva;
 import com.apgar.techinical_test.domain.Sala;
