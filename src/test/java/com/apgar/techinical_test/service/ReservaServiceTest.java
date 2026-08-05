@@ -85,4 +85,14 @@ class ReservaServiceTest {
 
         assertThat(resultado).isEmpty();
     }
+
+    // Teste deve garantir que deletarTodas delega a limpeza para o repository
+    @Test
+    void deveDelegarADelecaoDeTodasAsReservasParaORepository() {
+        ReservaService reservaService = new ReservaService(reservaRepository, reservaValidator);
+
+        reservaService.deletarTodas();
+
+        verify(reservaRepository).deletarTodas();
+    }
 }

@@ -5,6 +5,7 @@ import com.apgar.techinical_test.dto.ReservaResponse;
 import com.apgar.techinical_test.service.ReservaService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,5 +33,11 @@ public class ReservaController {
     @GetMapping
     public ResponseEntity<List<ReservaResponse>> listar() {
         return ResponseEntity.ok(reservaService.listarTodas());
+    }
+
+    @DeleteMapping
+    public ResponseEntity<Void> deletarTodas() {
+        reservaService.deletarTodas();
+        return ResponseEntity.ok().build();
     }
 }

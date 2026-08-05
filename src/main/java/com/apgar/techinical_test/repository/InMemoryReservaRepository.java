@@ -22,4 +22,9 @@ public class InMemoryReservaRepository implements ReservaRepositoryInterface {
     public synchronized void salvar(Reserva reserva) {
         reservas.add(reserva);
     }
+
+    @Override
+    public synchronized void deletarTodas() {
+        reservas.clear();
+    }
 }

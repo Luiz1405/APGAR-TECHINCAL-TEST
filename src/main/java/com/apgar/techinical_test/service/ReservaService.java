@@ -30,4 +30,8 @@ public class ReservaService {
                 .map(ReservaResponse::converterDe)
                 .toList();
     }
+
+    public void deletarTodas() {
+        reservaRepository.deletarTodas();
+    }
 }

@@ -6,10 +6,9 @@ import java.util.List;
 
 public interface ReservaRepositoryInterface {
 
-    /**
-     * @return todas as reservas armazenadas; lista vazia quando não houver nenhuma.
-     */
     List<Reserva> listarTodas();
 
     void salvar(Reserva reserva);
+
+    void deletarTodas();
 }
