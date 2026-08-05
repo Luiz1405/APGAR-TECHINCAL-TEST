@@ -39,6 +39,7 @@ JaCoCo roda automaticamente junto com `./mvnw test` (relatório em `target/site/
 | GET    | `/reservas`     | Lista todas as reservas                  |
 | DELETE | `/reservas`     | Remove todas as reservas                 |
 | GET    | `/estatisticas` | Estatísticas de ocupação do dia corrente |
+| GET    | `/health`       | Health check simples (`{"status":"Tudo Funcionando aqui"}`) |
 
 Regras de validação da reserva (sala, formato de data, duração, janela de horário, sobreposição etc.) conforme solicitado no enunciado.
 
