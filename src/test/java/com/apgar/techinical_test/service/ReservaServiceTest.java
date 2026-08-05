@@ -3,6 +3,7 @@ package com.apgar.techinical_test.service;
 import com.apgar.techinical_test.domain.Reserva;
 import com.apgar.techinical_test.domain.Sala;
 import com.apgar.techinical_test.dto.ReservaRequest;
+import com.apgar.techinical_test.dto.ReservaResponse;
 import com.apgar.techinical_test.exception.ReservaInvalidaException;
 import com.apgar.techinical_test.repository.Contracts.ReservaRepositoryInterface;
 import com.apgar.techinical_test.validation.ReservaValidator;
@@ -14,6 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.OffsetDateTime;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
@@ -58,5 +60,29 @@ class ReservaServiceTest {
 
         assertThatThrownBy(() -> reservaService.criar(request)).isInstanceOf(ReservaInvalidaException.class);
         verify(reservaRepository, never()).salvar(any());
+    }
+
+    // Teste deve garantir que as reservas armazenadas são convertidas para ReservaResponse na listagem
+    @Test
+    void deveListarTodasAsReservasConvertidasParaResponse() {
+        Reserva reserva = new Reserva(Sala.A101, "Maria",
+                OffsetDateTime.parse("2026-08-10T14:00:00-03:00"), OffsetDateTime.parse("2026-08-10T15:00:00-03:00"));
+        given(reservaRepository.listarTodas()).willReturn(List.of(reserva));
+        ReservaService reservaService = new ReservaService(reservaRepository, reservaValidator);
+
+        List<ReservaResponse> resultado = reservaService.listarTodas();
+
+        assertThat(resultado).containsExactly(ReservaResponse.converterDe(reserva));
+    }
+
+    // Teste deve garantir que a listagem retorna uma lista vazia, nunca null, quando não há reservas
+    @Test
+    void deveRetornarListaVaziaQuandoNaoHaReservas() {
+        given(reservaRepository.listarTodas()).willReturn(List.of());
+        ReservaService reservaService = new ReservaService(reservaRepository, reservaValidator);
+
+        List<ReservaResponse> resultado = reservaService.listarTodas();
+
+        assertThat(resultado).isEmpty();
     }
 }

@@ -2,9 +2,12 @@ package com.apgar.techinical_test.service;
 
 import com.apgar.techinical_test.domain.Reserva;
 import com.apgar.techinical_test.dto.ReservaRequest;
+import com.apgar.techinical_test.dto.ReservaResponse;
 import com.apgar.techinical_test.repository.Contracts.ReservaRepositoryInterface;
 import com.apgar.techinical_test.validation.ReservaValidator;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ReservaService {
@@ -20,5 +23,11 @@ public class ReservaService {
     public synchronized void criar(ReservaRequest request) {
         Reserva reserva = reservaValidator.validar(request, reservaRepository.listarTodas());
         reservaRepository.salvar(reserva);
+    }
+
+    public List<ReservaResponse> listarTodas() {
+        return reservaRepository.listarTodas().stream()
+                .map(ReservaResponse::converterDe)
+                .toList();
     }
 }
