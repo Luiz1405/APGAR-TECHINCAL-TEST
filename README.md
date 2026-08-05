@@ -43,6 +43,8 @@ JaCoCo roda automaticamente junto com `./mvnw test` (relatório em `target/site/
 
 Regras de validação da reserva (sala, formato de data, duração, janela de horário, sobreposição etc.) conforme solicitado no enunciado.
 
+Documentação (Swagger UI): `http://localhost:8080/swagger-ui/index.html`. JSON OpenAPI puro: `http://localhost:8080/v3/api-docs`.
+
 ## Padrões de código adotados
 
 - **Camadas**: `Controller` (sem lógica) → `Service` (orquestra) → `Validator`/`Repository`. Validações de negócio ficam isoladas em `ReservaValidator`, nunca no Controller ou no Repository.
